@@ -1,6 +1,6 @@
 VERSION 5.00
 Begin {C62A69F0-16DC-11CE-9E98-00AA00574A4F} mainForm 
-   Caption         =   "Dominos Experiation Labels"
+   Caption         =   "Dominos Expiration Labels"
    ClientHeight    =   10935
    ClientLeft      =   120
    ClientTop       =   465
@@ -13,6 +13,15 @@ Attribute VB_GlobalNameSpace = False
 Attribute VB_Creatable = False
 Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
+
+Private Sub OptionButton2_Click()
+
+End Sub
+
+Private Sub OptionButton1_Click()
+
+End Sub
+
 Private Sub PrintButton_Click()
     Dim path As String
     path = ThisWorkbook.path
@@ -27,13 +36,18 @@ Private Sub PrintButton_Click()
     
     ' START PRINTING STUFF?
     Print #1, "! 0 100 350 1"
-    Print #1, "DRAW_BOX 0 115 850 1 2"
-    Print #1, "DRAW_BOX 0 240 850 1 2"
+    Print #1, "DRAW_BOX 425 0 1 500 2"
     
-    Print #1, "TEXT 30 0 4 TEST1"
-    Print #1, "TEXT 30 40 4 TEST2"
-    
+    Print #1, "TEXT 3 30 20 ItemLine1"
+    Print #1, "TEXT 3 450 30 stuffs"
+    Print #1, "TEXT 3 30 65 ItemLine2"
+    Print #1, "TEXT 2 30 100 OP / Rec/ In-Use"
+    Print #1, "TEXT 2 30 140 DATE!"
+    Print #1, "TEXT 3 30 200 EXPIRES"
+    Print #1, "TEXT 2 30 240 date.."
+     
     Print #1, "END"
+    
     Close #1
     Shell ("notepad.exe /PT " & Chr(34) & labelPath & Chr(34) & " " & Chr(34) & "Label" & Chr(34))
     'END PRINTING STUFF?
@@ -42,3 +56,5 @@ End Sub
 Private Sub TextBox1_Change()
 CommandButton1.Caption = TextBox1.Text
 End Sub
+
+
