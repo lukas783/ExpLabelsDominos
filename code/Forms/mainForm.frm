@@ -23,12 +23,16 @@ Private Sub OptionButton1_Click()
 
 End Sub
 
+Private Sub CommandButton1_Click()
+    printLabel "Marinara", "Sauce"
+End Sub
+
 Private Sub MultiPage1_Change()
     dateText.Caption = getDate
 End Sub
 
 Private Sub PrintButton_Click()
-        printLabel "Green", "Peppers", "In-Use"
+        printLabel "Green", "Peppers"
         
 End Sub
 
