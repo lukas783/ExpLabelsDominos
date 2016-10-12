@@ -14,6 +14,7 @@ Attribute VB_Creatable = False
 Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
 
+
 Private Sub OptionButton2_Click()
 
 End Sub
@@ -22,35 +23,13 @@ Private Sub OptionButton1_Click()
 
 End Sub
 
+Private Sub MultiPage1_Change()
+    dateText.Caption = getDate
+End Sub
+
 Private Sub PrintButton_Click()
-    Dim path As String
-    path = ThisWorkbook.path
-    If (InStr(path, "/") > 0) Then
-        path = path & "/"
-    Else
-        path = path & "\"
-    End If
-    Dim labelPath As String
-    labelPath = path & "label.txt"
-    Open labelPath For Output As #1
-    
-    ' START PRINTING STUFF?
-    Print #1, "! 0 100 350 1"
-    Print #1, "DRAW_BOX 425 0 1 500 2"
-    
-    Print #1, "TEXT 3 30 20 ItemLine1"
-    Print #1, "TEXT 3 450 30 stuffs"
-    Print #1, "TEXT 3 30 65 ItemLine2"
-    Print #1, "TEXT 2 30 100 OP / Rec/ In-Use"
-    Print #1, "TEXT 2 30 140 DATE!"
-    Print #1, "TEXT 3 30 200 EXPIRES"
-    Print #1, "TEXT 2 30 240 date.."
-     
-    Print #1, "END"
-    
-    Close #1
-    Shell ("notepad.exe /PT " & Chr(34) & labelPath & Chr(34) & " " & Chr(34) & "Label" & Chr(34))
-    'END PRINTING STUFF?
+        printLabel "Green", "Peppers", "In-Use"
+        
 End Sub
 
 Private Sub TextBox1_Change()
