@@ -15,6 +15,18 @@ Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
 
 
+Private Sub CommandButton2_Click()
+
+End Sub
+
+Private Sub CommandButton3_Click()
+    MsgBox(
+End Sub
+
+Private Sub Label1_Click()
+
+End Sub
+
 Private Sub OptionButton2_Click()
 
 End Sub
@@ -37,6 +49,10 @@ End Sub
 
 Private Sub OptionButton8_Click()
 
+End Sub
+
+Private Sub pepButton_Click()
+    printLabel "Pepperoni", "", getExpDate(TextBox1.Text, OptionButton1.Value, OptionButton2.Value)
 End Sub
 
 Private Sub preppedButton_Click()

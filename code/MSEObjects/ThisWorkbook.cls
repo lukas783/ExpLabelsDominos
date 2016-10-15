@@ -51,6 +51,8 @@ Private Sub Workbook_Open()
     mainForm.Height = GetSystemMetrics(1) * 0.75            ' System screen height * (3/4)
     mainForm.MultiPage1.Width = mainForm.Width              ' tabbed pane, set width and height to appropriate dimensions
     mainForm.MultiPage1.Height = mainForm.Height - mainForm.MultiPage1.Top
+    mainForm.MultiPage2.Width = mainForm.Width
+    mainForm.MultiPage2.Height = mainForm.MultiPage1.Height - mainForm.MultiPage2.Top
     
     mainForm.dateText.Caption = getDate
     
