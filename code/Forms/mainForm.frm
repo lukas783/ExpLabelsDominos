@@ -24,7 +24,7 @@ Private Sub OptionButton1_Click()
 End Sub
 
 Private Sub CommandButton1_Click()
-    printLabel "Marinara", "Sauce"
+    printLabel "Marinara", "Sauce", "FFSDate"
 End Sub
 
 Private Sub MultiPage1_Change()
@@ -32,12 +32,14 @@ Private Sub MultiPage1_Change()
 End Sub
 
 Private Sub PrintButton_Click()
-        printLabel "Green", "Peppers"
+    Dim expDate As String
+    expDate = getExpDate(TextBox1.Text, OptionButton1.Value, OptionButton2.Value)
+    MsgBox ("... " & getExpDate(TextBox1, OptionButton1, OptionButton2))
+    
+    printLabel "Green", "Peppers", expDate
         
 End Sub
 
 Private Sub TextBox1_Change()
-CommandButton1.Caption = TextBox1.Text
+    CommandButton1.Caption = TextBox1.Text
 End Sub
-
-
