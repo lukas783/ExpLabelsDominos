@@ -45,7 +45,7 @@ End Sub
 Private Sub Workbook_Open()
     
     Dim response As VbMsgBoxResult
-    response = MsgBox("This is a test program, don't run this if you don't know what it is!\n", vbDefaultButton1, "TEST MSG BOX")
+    ' response = MsgBox("This is a test program, don't run this if you don't know what it is!\n", vbDefaultButton1, "TEST MSG BOX")
     
     mainForm.Width = GetSystemMetrics(0) * 0.75             ' System screen width * (3/4)
     mainForm.Height = GetSystemMetrics(1) * 0.75            ' System screen height * (3/4)

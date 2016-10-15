@@ -31,6 +31,18 @@ Private Sub MultiPage1_Change()
     dateText.Caption = getDate
 End Sub
 
+Private Sub OptionButton6_Click()
+
+End Sub
+
+Private Sub OptionButton8_Click()
+
+End Sub
+
+Private Sub preppedButton_Click()
+
+End Sub
+
 Private Sub PrintButton_Click()
     Dim expDate As String
     expDate = getExpDate(TextBox1.Text, OptionButton1.Value, OptionButton2.Value)
