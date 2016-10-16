@@ -53,7 +53,7 @@ Private Sub Workbook_Open()
     mainForm.MultiPage1.Height = mainForm.Height - mainForm.MultiPage1.Top
     mainForm.MultiPage2.Width = mainForm.Width
     mainForm.MultiPage2.Height = mainForm.MultiPage1.Height - mainForm.MultiPage2.Top
-    
+
     mainForm.dateText.Caption = getDate
     
     mainForm.Show                                           ' Inits the main form for the application
