@@ -13,6 +13,43 @@ Attribute VB_GlobalNameSpace = False
 Attribute VB_Creatable = False
 Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
+Private Sub aclear_Button_Click()
+ListBox1.Clear
+j = ItemCol.Count - 1
+Set ItemCol = Nothing
+
+End Sub
+
+Private Sub aPrint_Button_Click()
+    Dim lab2col As New Collection
+    Dim lab4col As New Collection
+    Dim name1 As String
+    Dim name_2 As String
+    Dim expdate As String
+    Dim colCount As Integer
+    colCount = ItemCol.Count
+    
+    For i = 1 To colCount
+        If ItemCol(i).labelType = "2" Then
+            lab2col.Add (ItemCol(i))
+        Else
+            lab4col.Add (ItemCol(i))
+        End If
+    Next i
+    
+    For i = 1 To lab2col.Count
+        MsgBox ("2: " & lab2col(i).name)
+    Next i
+    For i = 1 To lab4col.Count
+        MsgBox ("4: " & lab4col(i).name)
+    Next i
+    ListBox1.Clear
+    Set ItemCol = Nothing
+    
+    
+
+End Sub
+
 Private Sub dateLabel_Click()
 
 End Sub
@@ -36,6 +73,10 @@ Private Sub label4_Alex_Click()
 End Sub
 
 Private Sub Labels2_Click()
+
+End Sub
+
+Private Sub ListBox1_Click()
 
 End Sub
 
@@ -84,19 +125,27 @@ End Sub
 Private Sub Banana_Pep_Button_Click()
 Dim prep As New pItem
 
-'ItemCol.Add "Banana"
-'ItemCol.Add "Peppers"
-'ItemCol.Add getExpDate(TextBox1.Text, OptionButton1.Value, OptionButton2.Value)
 prep.name = "Banana"
+prep.name2 = "Peppers"
+prep.expdate = getExpDate(TextBox1.Text, OptionButton1.Value, OptionButton2.Value)
+If mainForm.In_Use_Alex.Value = "True" Then
+    prep.useType = "In-Use"
+Else
+    prep.useType = "Prepped"
+End If
+If mainForm.label2_Alex.Value = "True" Then
+    prep.labelType = "2"
+Else
+    prep.labelType = "4"
+End If
+
 ItemCol.Add prep
-
-Dim i As Integer
-    MsgBox (ItemCol(1).name)
-ListBox1.AddItem (prep.name)
-
-printLabel "Banana", "Peppers", getExpDate(TextBox1.Text, OptionButton1.Value, OptionButton2.Value)
+ListBox1.AddItem ItemCol(ItemCol.Count).name
+ListBox1.List((ItemCol.Count - 1), 1) = ItemCol(ItemCol.Count).name2
 
 
+'.List(ItemCol.Count - 1, 0) = ItemCol(ItemCol.Count).name
+'.List(ItemCol.Count - 1, 1) = ItemCol(ItemCol.Count).name2
 End Sub
 
 Private Sub Boned_Wings_Button_Click()
@@ -169,8 +218,12 @@ End Sub
 Private Sub Mushroom_Button_Click()
 Dim inputDate As String
 
-inputDate = Application.InputBox("Enter Expiration Date")
-printLabel "Mushroom", "", inputDate
+inputDate = InputBox("Enter Expiration Date")
+If (inputDate = "") Then
+Else
+    printLabel "Mushroom", "", inputDate
+End If
+
 End Sub
 
 Private Sub Onion_Button_Click()
@@ -229,11 +282,11 @@ End Sub
 'end toppings
 
 Private Sub PrintButton_Click()
-    Dim expDate As String
-    expDate = getExpDate(TextBox1.Text, OptionButton1.Value, OptionButton2.Value)
+    Dim expdate As String
+    expdate = getExpDate(TextBox1.Text, OptionButton1.Value, OptionButton2.Value)
     MsgBox ("... " & getExpDate(TextBox1, OptionButton1, OptionButton2))
     
-    printLabel "Green", "Peppers", expDate
+    printLabel "Green", "Peppers", expdate
         
 End Sub
 

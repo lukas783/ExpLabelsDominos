@@ -10,5 +10,7 @@ Attribute VB_Exposed = False
 
     Public name As String
     Public name2 As String
-    Public expDate As String
-
+    Public expdate As String
+    Public useType As String
+    Public labelType As String
+    

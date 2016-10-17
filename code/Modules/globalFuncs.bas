@@ -68,7 +68,7 @@ Public Function getUsage() As String
     End If
     
 End Function
-Sub printLabel(item1 As String, item2 As String, expDate As String)
+Sub printLabel(item1 As String, item2 As String, expdate As String)
 
     Dim labelPath As String
     labelPath = getPath & "label.txt"
@@ -86,7 +86,7 @@ Sub printLabel(item1 As String, item2 As String, expDate As String)
         Print #1, "TEXT 2 40 150 Prepped on: " & getDate
         Print #1, "TEXT 2 40 185 By: " & mainForm.nameText.Text
         Print #1, "TEXT 3 40 220 EXPIRES"
-        Print #1, "TEXT 4 40 260 " & expDate
+        Print #1, "TEXT 4 40 260 " & expdate
     
         Print #1, "TEXT 3 450 20 " & item1
         Print #1, "TEXT 3 450 75 " & item2
@@ -94,7 +94,7 @@ Sub printLabel(item1 As String, item2 As String, expDate As String)
         Print #1, "TEXT 2 450 150 Prepped on: " & getDate
         Print #1, "TEXT 2 450 185 By: " & mainForm.nameText.Text
         Print #1, "TEXT 3 450 220 EXPIRES"
-        Print #1, "TEXT 4 450 260 " & expDate
+        Print #1, "TEXT 4 450 260 " & expdate
      
     Else
         ' START PRINTING STUFF FOR 4 LABELS OPTION
