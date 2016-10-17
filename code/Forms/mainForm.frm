@@ -13,6 +13,9 @@ Attribute VB_GlobalNameSpace = False
 Attribute VB_Creatable = False
 Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
+Private Sub dateLabel_Click()
+
+End Sub
 
 ' Option to set date
 Private Sub dateText_Click()
@@ -46,6 +49,10 @@ Private Sub In_Use_Alex_Click()
 
 End Sub
 
+Private Sub OptionButton1_Click()
+
+End Sub
+
 Private Sub Prepped_Alex_Click()
 
 End Sub
@@ -57,7 +64,6 @@ End Sub
 Private Sub receivedButton_Click()
 
 End Sub
-
 
 Private Sub useButton_Click()
 
@@ -76,7 +82,21 @@ End Sub
 'start topping clicks
 
 Private Sub Banana_Pep_Button_Click()
+Dim prep As New pItem
+
+'ItemCol.Add "Banana"
+'ItemCol.Add "Peppers"
+'ItemCol.Add getExpDate(TextBox1.Text, OptionButton1.Value, OptionButton2.Value)
+prep.name = "Banana"
+ItemCol.Add prep
+
+Dim i As Integer
+    MsgBox (ItemCol(1).name)
+ListBox1.AddItem (prep.name)
+
 printLabel "Banana", "Peppers", getExpDate(TextBox1.Text, OptionButton1.Value, OptionButton2.Value)
+
+
 End Sub
 
 Private Sub Boned_Wings_Button_Click()
@@ -123,10 +143,13 @@ printLabel "Tomatoes", "", getExpDate(TextBox1.Text, OptionButton1.Value, Option
 End Sub
 Private Sub pep_Button_Click()
 printLabel "Pepperoni", "", getExpDate(TextBox1.Text, OptionButton1.Value, OptionButton2.Value)
+MsgBox (TextBox1.Text)
+
 End Sub
 
 Private Sub Philly_Button_Click()
 printLabel "Philly", "", getExpDate(TextBox1.Text, OptionButton1.Value, OptionButton2.Value)
+
 End Sub
 
 Private Sub Pineapple_Button_Click()
@@ -144,7 +167,10 @@ Private Sub Ham_Button_Click()
 printLabel "Ham", "", getExpDate(TextBox1.Text, OptionButton1.Value, OptionButton2.Value)
 End Sub
 Private Sub Mushroom_Button_Click()
-printLabel "Mushroom", "", getExpDate(TextBox1.Text, OptionButton1.Value, OptionButton2.Value)
+Dim inputDate As String
+
+inputDate = Application.InputBox("Enter Expiration Date")
+printLabel "Mushroom", "", inputDate
 End Sub
 
 Private Sub Onion_Button_Click()
@@ -165,7 +191,7 @@ Private Sub Bacon_Button_Click()
 printLabel "Bacon", "", getExpDate(TextBox1.Text, OptionButton1.Value, OptionButton2.Value)
 End Sub
 
-Private Sub Beef_Button_Click()
+Private Sub aBeef_Button_Click()
 printLabel "Beef", "", getExpDate(TextBox1.Text, OptionButton1.Value, OptionButton2.Value)
 End Sub
 

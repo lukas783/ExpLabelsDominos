@@ -1,5 +1,8 @@
 Attribute VB_Name = "globalFuncs"
 
+Public ItemCol As New Collection
+
+
 Public Function getExpDate(txtBox As String, optHrs As Boolean, optDays As Boolean) As String
     Dim currDate As Date
     Dim txtInt As Integer
@@ -25,7 +28,6 @@ Public Function getExpDate(txtBox As String, optHrs As Boolean, optDays As Boole
     
 End Function
 
-
 Public Function getPath() As String
     Dim path As String
     path = ThisWorkbook.path
@@ -41,18 +43,30 @@ Public Function getDate() As String
 End Function
 
 Public Function getUsage() As String
-    If mainForm.receivedButton.Value = "True" Then
-        getUsage = "Received"
-    ElseIf mainForm.openButton.Value = "True" Then
-        getUsage = "Opened"
-    ElseIf mainForm.preppedButton.Value = "True" Then
-        getUsage = "Prepped"
-    ElseIf mainForm.useButton.Value = "True" Then
-        getUsage = "In-Use"
-    Else
-        getUsage = "N/A"
+    If mainForm.MultiPage1.Value = 0 Then
+    
+        If mainForm.receivedButton.Value = "True" Then
+            getUsage = "Received"
+        ElseIf mainForm.openButton.Value = "True" Then
+            getUsage = "Opened"
+        ElseIf mainForm.preppedButton.Value = "True" Then
+            getUsage = "Prepped"
+        ElseIf mainForm.useButton.Value = "True" Then
+            getUsage = "In-Use"
+        Else
+            getUsage = "N/A"
+        End If
     End If
-        
+    If mainForm.MultiPage1.Value = 3 Then
+        If mainForm.In_Use_Alex.Value = "True" Then
+            getUsage = "In-Use"
+        ElseIf mainForm.Prepped_Alex.Value = "True" Then
+            getUsage = "Prepped"
+        Else
+            getUsage = "N/A"
+        End If
+    End If
+    
 End Function
 Sub printLabel(item1 As String, item2 As String, expDate As String)
 
