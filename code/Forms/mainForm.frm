@@ -13,46 +13,15 @@ Attribute VB_GlobalNameSpace = False
 Attribute VB_Creatable = False
 Attribute VB_PredeclaredId = True
 Attribute VB_Exposed = False
-Private Sub aclear_Button_Click()
-ListBox1.Clear
-j = ItemCol.Count - 1
-Set ItemCol = Nothing
-
-End Sub
-
-Private Sub aPrint_Button_Click()
-    Dim lab2col As New Collection
-    Dim lab4col As New Collection
-    Dim name1 As String
-    Dim name_2 As String
-    Dim expdate As String
-    Dim colCount As Integer
-    colCount = ItemCol.Count
-    
-    For i = 1 To colCount
-        If ItemCol(i).labelType = "2" Then
-            lab2col.Add (ItemCol(i))
-        Else
-            lab4col.Add (ItemCol(i))
-        End If
-    Next i
-    
-    For i = 1 To lab2col.Count
-        MsgBox ("2: " & lab2col(i).name)
-    Next i
-    For i = 1 To lab4col.Count
-        MsgBox ("4: " & lab4col(i).name)
-    Next i
-    ListBox1.Clear
-    Set ItemCol = Nothing
-    
-    
-
-End Sub
-
 Private Sub dateLabel_Click()
 
 End Sub
+
+' Start Settings Tab Buttons
+Private Sub editSetting_Click()
+    MsgBox ("Yo dawg, this doesn't work right now, sorry. :/")
+End Sub
+' End Settings Tab Buttons
 
 ' Option to set date
 Private Sub dateText_Click()
@@ -73,10 +42,6 @@ Private Sub label4_Alex_Click()
 End Sub
 
 Private Sub Labels2_Click()
-
-End Sub
-
-Private Sub ListBox1_Click()
 
 End Sub
 
@@ -106,6 +71,10 @@ Private Sub receivedButton_Click()
 
 End Sub
 
+Private Sub settingsList_Click()
+
+End Sub
+
 Private Sub useButton_Click()
 
 End Sub
@@ -125,27 +94,20 @@ End Sub
 Private Sub Banana_Pep_Button_Click()
 Dim prep As New pItem
 
+'ItemCol.Add "Banana"
+'ItemCol.Add "Peppers"
+'ItemCol.Add getExpDate(TextBox1.Text, OptionButton1.Value, OptionButton2.Value)
 prep.name = "Banana"
 prep.name2 = "Peppers"
-prep.expdate = getExpDate(TextBox1.Text, OptionButton1.Value, OptionButton2.Value)
-If mainForm.In_Use_Alex.Value = "True" Then
-    prep.useType = "In-Use"
-Else
-    prep.useType = "Prepped"
-End If
-If mainForm.label2_Alex.Value = "True" Then
-    prep.labelType = "2"
-Else
-    prep.labelType = "4"
-End If
-
+prep.expDate = getExpDate(TextBox1.Text, OptionButton1.Value, OptionButton2.Value)
 ItemCol.Add prep
-ListBox1.AddItem ItemCol(ItemCol.Count).name
-ListBox1.List((ItemCol.Count - 1), 1) = ItemCol(ItemCol.Count).name2
+
+    MsgBox (ItemCol(1).name)
+ListBox1.AddItem (prep.name)
+
+printLabel "Banana", "Peppers", getExpDate(TextBox1.Text, OptionButton1.Value, OptionButton2.Value)
 
 
-'.List(ItemCol.Count - 1, 0) = ItemCol(ItemCol.Count).name
-'.List(ItemCol.Count - 1, 1) = ItemCol(ItemCol.Count).name2
 End Sub
 
 Private Sub Boned_Wings_Button_Click()
@@ -154,6 +116,16 @@ End Sub
 
 Private Sub Boneless_Wings_Click()
 printLabel "Boneless", "Wings", getExpDate(TextBox1.Text, OptionButton1.Value, OptionButton2.Value)
+
+Dim id As Integer
+For i = 2 To 8
+    If (ThisWorkbook.Sheets("Data").Range("A" & i) = Boneless_Wings.Caption) Then
+        id = i
+    End If
+Next i
+MsgBox (id)
+    
+
 End Sub
 
 Private Sub Brownies_Button_Click()
@@ -282,11 +254,11 @@ End Sub
 'end toppings
 
 Private Sub PrintButton_Click()
-    Dim expdate As String
-    expdate = getExpDate(TextBox1.Text, OptionButton1.Value, OptionButton2.Value)
+    Dim expDate As String
+    expDate = getExpDate(TextBox1.Text, OptionButton1.Value, OptionButton2.Value)
     MsgBox ("... " & getExpDate(TextBox1, OptionButton1, OptionButton2))
     
-    printLabel "Green", "Peppers", expdate
+    printLabel "Green", "Peppers", expDate
         
 End Sub
 
@@ -299,3 +271,15 @@ Private Sub TextBox1_Change()
     CommandButton1.Caption = TextBox1.Text
 End Sub
 
+Private Sub UserForm_Click()
+
+End Sub
+
+Private Sub UserForm_Initialize()
+    settingsList.RowSource = "'[" & ThisWorkbook.name & "]Data'!" & getAddr()
+    settingsList.ColumnWidths = "125;65;65;55;55;55;65;75"
+    
+    settingsList.Width = MultiPage1.Width - 20
+    settingsList.Height = MultiPage1.Height - mainForm.settingsList.Top - 10
+    
+End Sub

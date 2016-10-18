@@ -1,7 +1,10 @@
 Attribute VB_Name = "globalFuncs"
 
 Public ItemCol As New Collection
-
+Public Function getAddr() As String
+    getAddr = ThisWorkbook.Sheets("Data").Range("A1").CurrentRegion.Offset(1, 0).Resize(79, 8).Address
+    
+End Function
 
 Public Function getExpDate(txtBox As String, optHrs As Boolean, optDays As Boolean) As String
     Dim currDate As Date
@@ -68,7 +71,7 @@ Public Function getUsage() As String
     End If
     
 End Function
-Sub printLabel(item1 As String, item2 As String, expdate As String)
+Sub printLabel(item1 As String, item2 As String, expDate As String)
 
     Dim labelPath As String
     labelPath = getPath & "label.txt"
@@ -86,7 +89,7 @@ Sub printLabel(item1 As String, item2 As String, expdate As String)
         Print #1, "TEXT 2 40 150 Prepped on: " & getDate
         Print #1, "TEXT 2 40 185 By: " & mainForm.nameText.Text
         Print #1, "TEXT 3 40 220 EXPIRES"
-        Print #1, "TEXT 4 40 260 " & expdate
+        Print #1, "TEXT 4 40 260 " & expDate
     
         Print #1, "TEXT 3 450 20 " & item1
         Print #1, "TEXT 3 450 75 " & item2
@@ -94,7 +97,7 @@ Sub printLabel(item1 As String, item2 As String, expdate As String)
         Print #1, "TEXT 2 450 150 Prepped on: " & getDate
         Print #1, "TEXT 2 450 185 By: " & mainForm.nameText.Text
         Print #1, "TEXT 3 450 220 EXPIRES"
-        Print #1, "TEXT 4 450 260 " & expdate
+        Print #1, "TEXT 4 450 260 " & expDate
      
     Else
         ' START PRINTING STUFF FOR 4 LABELS OPTION
@@ -102,6 +105,12 @@ Sub printLabel(item1 As String, item2 As String, expdate As String)
         
         
     End If
+    
+    If True Then
+    End If
+    
+    
+    
     
     Print #1, "END"
     
